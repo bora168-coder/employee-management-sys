@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:16
+    container_name: restaurant-db
+    restart: always
+    environment:
+      POSTGRES_DB: restaurant
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Raksa-14
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - restaurant-network
+
+  app:
+    image: phalraksa/restaurant-management
+    container_name: restaurant-app
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "8181:8181"
+    environment:
+      SPRING_PROFILES_ACTIVE: local
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/restaurant
+    networks:
+      - restaurant-network
+
+volumes:
+  postgres_data:
+
+networks:
+  restaurant-network:
