@@ -9,7 +9,7 @@ spring:
       password: 1234
 
 server:
-  port: 8181
+  port: 8282
 
 logging:
   level:

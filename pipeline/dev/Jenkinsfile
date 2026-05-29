@@ -10,7 +10,7 @@ pipeline {
         APP_NAME     = "restaurant-management"
         IMAGE_REPO   = "phalraksa/restaurant-management"
         IMAGE_TAG    = "${env.GIT_COMMIT[0..6]}"   // short SHA e.g. a3f91bc
-        DOCKER_IMAGE = "${IMAGE_REPO}"
+        DOCKER_IMAGE = "${IMAGE_REPO}:${IMAGE_TAG}"
         DOCKER_CREDS = "dockerhub-creds"
     }
 

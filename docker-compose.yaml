@@ -17,7 +17,7 @@ services:
       - restaurant-network
 
   app:
-    image: phalraksa/restaurant-management
+    image: phalraksa/restaurant-management:${IMAGE_TAG}
     container_name: restaurant-app
     restart: always
     depends_on:
